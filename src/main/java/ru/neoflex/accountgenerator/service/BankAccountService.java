@@ -24,9 +24,9 @@ public class BankAccountService {
         for (int i = 0; i < accountCounter; i++) {
             Sex sex = dataRandomGenerator.getRandomSex();
             bankAccounts.add(new BankAccount(
-                    dataRandomGenerator.getRandomFirstName(sex),
-                    dataRandomGenerator.getRandomMiddleName(sex),
-                    dataRandomGenerator.getRandomLastName(sex),
+                    dataRandomGenerator.getRandomFirstName(sex).trim(),
+                    dataRandomGenerator.getRandomMiddleName(sex).trim(),
+                    dataRandomGenerator.getRandomLastName(sex).trim(),
                     dataRandomGenerator.getRandomAccountNumber(),
                     sex
             ));
