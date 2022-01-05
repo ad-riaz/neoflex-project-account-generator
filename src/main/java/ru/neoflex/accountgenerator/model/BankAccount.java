@@ -1,13 +1,23 @@
 package ru.neoflex.accountgenerator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 public class BankAccount {
-
+    @JsonProperty("firstName")
     private String firstName;
+
+    @JsonProperty("middleName")
     private String middleName;
+
+    @JsonProperty("lastName")
     private String lastName;
+
+    @JsonProperty("accountNumber")
     private long accountNumber;
+
+    @JsonProperty("sex")
     private Sex sex;
 
     /**
@@ -24,6 +34,8 @@ public class BankAccount {
         this.accountNumber = accountNumber;
         this.sex = sex;
     }
+
+    public BankAccount() {}
 
     /**
      *

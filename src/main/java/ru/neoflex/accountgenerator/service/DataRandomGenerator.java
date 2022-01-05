@@ -15,7 +15,6 @@ public class DataRandomGenerator {
     private final static String womensMiddleNameFile =   "src\\main\\resources\\clientsData\\WomansMiddleNames.txt";
     private final static String womensLastNameFile =     "src\\main\\resources\\clientsData\\WomansMiddleNames.txt";
 
-
     private String getRandomName(String filename) {
         TxtReader txtReader = new TxtReader();
         List<String> names = txtReader.read(filename);
@@ -94,9 +93,6 @@ public class DataRandomGenerator {
                 sex = Sex.FEMALE;
                 break;
         }
-
-        System.out.println(variant);
-        System.out.println(sex);
 
         return sex;
     }

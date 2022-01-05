@@ -9,16 +9,13 @@ import java.util.List;
 
 @Service
 public class BankAccountService {
-    private static int accountCounter = 10;
-    private static int timeout = 15;
-
     private final DataRandomGenerator dataRandomGenerator;
 
     public BankAccountService(DataRandomGenerator dataRandomGenerator) {
         this.dataRandomGenerator = dataRandomGenerator;
     }
 
-    public List<BankAccount> getRandomAccounts() {
+    public List<BankAccount> getRandomAccounts(int accountCounter) {
         List<BankAccount> bankAccounts = new ArrayList<>();
 
         for (int i = 0; i < accountCounter; i++) {
