@@ -1,11 +1,9 @@
 package ru.neoflex.accountgenerator.model;
 
 import java.util.Objects;
-import java.util.UUID;
 
 public class BankAccount {
 
-    private final UUID uuid;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -25,15 +23,6 @@ public class BankAccount {
         this.lastName = lastName;
         this.accountNumber = accountNumber;
         this.sex = sex;
-        uuid = UUID.randomUUID();
-    }
-
-    /**
-     *
-     * @return client's bank account uuid
-     */
-    public UUID getUuid() {
-        return uuid;
     }
 
     /**
@@ -108,34 +97,27 @@ public class BankAccount {
         this.accountNumber = accountNumber;
     }
 
-    /**
-     *
-     * @param o
-     * @return true if objects are equal, and false if they don't.
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof BankAccount)) return false;
         BankAccount that = (BankAccount) o;
-        return getUuid() == that.getUuid() && getAccountNumber() == that.getAccountNumber() && getFirstName().equals(that.getFirstName()) && getMiddleName().equals(that.getMiddleName()) && getLastName().equals(that.getLastName());
+        return getAccountNumber() == that.getAccountNumber() && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getMiddleName(), that.getMiddleName()) && Objects.equals(getLastName(), that.getLastName()) && sex == that.sex;
     }
 
-    /**
-     *
-     * @return BankAccount object hashcode.
-     */
     @Override
     public int hashCode() {
-        return Objects.hash(getUuid(), getFirstName(), getMiddleName(), getLastName(), getAccountNumber()) * 31;
+        return Objects.hash(getFirstName(), getMiddleName(), getLastName(), getAccountNumber(), sex);
     }
 
-    /**
-     *
-     * @return a string representation of the object.
-     */
     @Override
     public String toString() {
-        return "Bank account: " + firstName + " " + middleName + " " + lastName + "\nAccount number: " + accountNumber;
+        return "BankAccount{" +
+                "firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", accountNumber=" + accountNumber +
+                ", sex=" + sex +
+                '}';
     }
 }
