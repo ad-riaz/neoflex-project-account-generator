@@ -6,7 +6,7 @@ public enum Sex {
 
     private String sex;
 
-    Sex(String sex){
+    Sex(String sex) {
         this.sex = sex;
     }
 

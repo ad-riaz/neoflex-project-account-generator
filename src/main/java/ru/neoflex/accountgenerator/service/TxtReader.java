@@ -17,8 +17,6 @@ public class TxtReader {
             while ((line = (String) bufferedReader.readLine()) != null) {
                 lines.add(line);
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {

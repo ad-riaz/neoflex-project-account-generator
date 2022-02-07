@@ -20,13 +20,18 @@ public class BankAccountService {
 
         for (int i = 0; i < accountCounter; i++) {
             Sex sex = dataRandomGenerator.getRandomSex();
-            bankAccounts.add(new BankAccount(
-                    dataRandomGenerator.getRandomFirstName(sex).trim(),
-                    dataRandomGenerator.getRandomMiddleName(sex).trim(),
-                    dataRandomGenerator.getRandomLastName(sex).trim(),
-                    dataRandomGenerator.getRandomAccountNumber(),
-                    sex
-            ));
+            String[] fullName = dataRandomGenerator.getRandomFullName(sex).split(" ");
+            String firstName = fullName[0].trim();
+            String middleName = fullName[1].trim();
+            String lastName = fullName[2].trim();
+            long accountNumber = dataRandomGenerator.getRandomAccountNumber();
+            bankAccounts.add(BankAccount.builder()
+                    .accountNumber(accountNumber)
+                    .sex(sex)
+                    .firstName(firstName)
+                    .middleName(middleName)
+                    .lastName(lastName)
+                    .build());
         }
 
         return bankAccounts;

@@ -8,14 +8,14 @@ import java.util.Random;
 
 @Service
 public class DataRandomGenerator {
-    private final static String mensFirstNameFile =      "src\\main\\resources\\clientsData\\MansFirstNames.txt";
-    private final static String mensMiddleNameFile =     "src\\main\\resources\\clientsData\\MansMiddleNames.txt";
-    private final static String mensLastNameFile =       "src\\main\\resources\\clientsData\\MansSurnames.txt";
-    private final static String womensFirstNameFile =    "src\\main\\resources\\clientsData\\WomansFirstNames.txt";
-    private final static String womensMiddleNameFile =   "src\\main\\resources\\clientsData\\WomansMiddleNames.txt";
-    private final static String womensLastNameFile =     "src\\main\\resources\\clientsData\\WomansMiddleNames.txt";
+    private final static String mensFirstNameFile = "src\\main\\resources\\clientsData\\MansFirstNames.txt";
+    private final static String mensMiddleNameFile = "src\\main\\resources\\clientsData\\MansMiddleNames.txt";
+    private final static String mensLastNameFile = "src\\main\\resources\\clientsData\\MansSurnames.txt";
+    private final static String womenFirstNameFile = "src\\main\\resources\\clientsData\\WomansFirstNames.txt";
+    private final static String womenMiddleNameFile = "src\\main\\resources\\clientsData\\WomansMiddleNames.txt";
+    private final static String womenLastNameFile = "src\\main\\resources\\clientsData\\WomansMiddleNames.txt";
 
-    private String getRandomName(String filename) {
+    private String readRandomNameFromFile(String filename) {
         TxtReader txtReader = new TxtReader();
         List<String> names = txtReader.read(filename);
 
@@ -33,48 +33,23 @@ public class DataRandomGenerator {
         return random.nextInt(max - min) + min;
     }
 
-    public String getRandomFirstName(Sex sex) {
-        String filename = "";
+    public String getRandomFullName(Sex sex) {
+        String name = "";
 
         switch (sex) {
             case FEMALE:
-                filename = womensFirstNameFile;
+                name += readRandomNameFromFile(womenFirstNameFile) + " " +
+                        readRandomNameFromFile(womenMiddleNameFile) + " " +
+                        readRandomNameFromFile(womenLastNameFile);
                 break;
             case MALE:
-                filename = mensFirstNameFile;
+                name += readRandomNameFromFile(mensFirstNameFile) + " " +
+                        readRandomNameFromFile(mensMiddleNameFile) + " " +
+                        readRandomNameFromFile(mensLastNameFile);
                 break;
         }
 
-        return getRandomName(filename);
-    }
-
-    public String getRandomMiddleName(Sex sex) {
-        String filename = "";
-
-        switch (sex) {
-            case FEMALE:
-                filename = womensMiddleNameFile;
-                break;
-            case MALE:
-                filename = mensMiddleNameFile;
-                break;
-        }
-
-        return getRandomName(filename);
-    }
-
-    public String getRandomLastName(Sex sex) {
-        String filename = "";
-
-        switch (sex) {
-            case FEMALE:
-                filename = womensLastNameFile;
-                break;
-            case MALE:
-                filename = mensLastNameFile;
-                break;
-        }
-        return getRandomName(filename);
+        return name;
     }
 
     public int getRandomAccountNumber() {
